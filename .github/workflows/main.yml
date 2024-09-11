@@ -38,7 +38,7 @@ jobs:
 
       - name: List files
         run: | 
-          cd build-dir ls -la
+          ls -la
       #     # Use the JSON file to configure the build
       #     cat config/manifest.json > build-dir/manifest.json
 
