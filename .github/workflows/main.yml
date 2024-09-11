@@ -19,7 +19,7 @@ jobs:
           
       - name: Set up Flatpak
         run: |
-          sudo apt install flatpak
+          sudo apt-get install -y flatpak flatpak-builder
           sudo add-apt-repository ppa:flatpak/stable
 
       - name: Install repository Flatpak
