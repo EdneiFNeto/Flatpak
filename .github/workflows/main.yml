@@ -30,7 +30,7 @@ jobs:
           flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
       - name: Build Flatpak package
-        run: flatpak-builder --force-clean build-dir org.flatpak.HelloApp.yml
+        run: flatpak-builder --force-clean build-dir .github/scripts/org.flatpak.HelloApp.yml
 
       - name: Flatpak-builder
         run: | 
