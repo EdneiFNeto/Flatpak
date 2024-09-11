@@ -32,13 +32,10 @@ jobs:
       - name: Prepare Flatpak build environment
         run: |
           mkdir -p build-dir
-          mkdir -p files
           cp files/composeApp-desktop.jar build-dir/composeApp-desktop.jar
 
       - name: Enter directory and list files
         run: |
-          cd build-dir                  
-          ls -la    
           cd files 
           ls -la
 
