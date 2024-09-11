@@ -38,7 +38,9 @@ jobs:
       - name: Enter directory and list files
         run: |
           cd build-dir                  
-          ls -la                 
+          ls -la    
+          cd files 
+          ls -la
 
       - name: Build Flatpak package
         run: flatpak-builder --force-clean build-dir com.flatpak.json
