@@ -38,19 +38,15 @@ jobs:
 
       - name: List files
         run: | 
-          cd build-dir
-          ls -la
-      #     # Use the JSON file to configure the build
-      #     cat config/manifest.json > build-dir/manifest.json
+          cat config/manifest.json > build-dir/manifest.json
+          flatpak-builder --force-clean --repo=repo build-dir
 
-      #     flatpak-builder --force-clean --repo=repo build-dir
-
-      # - name: Publish Flatpak package
-      #   run: |
-      #     flatpak build-bundle repo myapp.flatpak com.example.MyApp
+      - name: Publish Flatpak package
+        run: |
+          flatpak build-bundle repo myapp.flatpak com.example.MyApp
           
-      # - name: Upload Flatpak package
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: myapp-flatpak
-      #     path: myapp.flatpak
+      - name: Upload Flatpak package
+        uses: actions/upload-artifact@v3
+        with:
+          name: myapp-flatpak
+          path: myapp.flatpak
