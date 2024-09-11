@@ -41,11 +41,11 @@ jobs:
           ls -la                 
 
       - name: Build Flatpak package
-        run: flatpak-builder --force-clean build-dir com.flatpk.json
+        run: flatpak-builder --force-clean build-dir com.flatpak.json
 
       - name: Flatpak-builder
         run: | 
-          cat com.flatpk.json > build-dir/com.flatpk.json
+          cat com.flatpak.json > build-dir/com.flatpak.json
           flatpak-builder --force-clean --repo=repo build-dir
 
       - name: Publish Flatpak package
