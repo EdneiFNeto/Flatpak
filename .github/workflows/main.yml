@@ -34,7 +34,7 @@ jobs:
         run: ls -R
 
       - name: Build Flatpak package
-        run: flatpak-builder --force-clean build-dir script/org.flatpak.HelloApp.yml
+        run: flatpak-builder --force-clean build-dir src/org.flatpak.HelloApp.yml
 
       - name: Flatpak-builder
         run: | 
