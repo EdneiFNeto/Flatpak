@@ -19,16 +19,16 @@ jobs:
           
       - name: Set up Flatpak
         run: |
-          sudo apt-get update
-          sudo apt-get install -y flatpak flatpak-builder
-          flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-          flatpak --user install -y flathub org.freedesktop.Platform//21.08
-          flatpak --user install -y flathub org.freedesktop.Sdk//21.08   
-          flatpak install flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08
+          sudo apt install flatpak
+          sudo add-apt-repository ppa:flatpak/stable
 
       - name: Install repository Flatpak
         run: |
           flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+      - name: Install SDK
+        run: |
+          flatpak install flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08
 
       - name: Build Flatpak package
         run: flatpak-builder --force-clean build-dir .github/scripts/org.flatpak.HelloApp.yml
