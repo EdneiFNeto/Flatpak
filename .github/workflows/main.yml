@@ -31,10 +31,10 @@ jobs:
           flatpak --version
           flatpak-builder --version
 
-      # - name: Build Flatpak package
-      #   run: |
-      #     mkdir -p build-dir
-      #     cp build/libs/myapp.jar build-dir/
+      - name: Build Flatpak package
+        run: |
+          mkdir -p build-dir
+          cp composeApp/build/libs/composeApp-desktop.jar build-dir/
           
       #     # Use the JSON file to configure the build
       #     cat config/manifest.json > build-dir/manifest.json
