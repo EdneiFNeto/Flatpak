@@ -33,11 +33,11 @@ jobs:
         run: |
           flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-#      - name: Prepare Flatpak build environment
-#        run: |
-#          mkdir -p build-dir
-#          mkdir -p files
-#          cp path/to/composeApp-desktop.jar files/composeApp-desktop.jar
+      - name: Prepare Flatpak build environment
+        run: |
+          mkdir -p build-dir
+          mkdir -p files
+          cp composeApp/build/libs/composeApp-desktop.jar files/composeApp-desktop.jar
 
       - name: Enter directory and list files
         run: |
