@@ -38,7 +38,7 @@ jobs:
 
       - name: Flatpak-builder
         run: | 
-          flatpak-builder --user --install --force-clean build-dir org.flatpak.HelloApp.yml
+          flatpak-builder --user --install --force-clean build-dir src/org.flatpak.HelloApp.yml
 
       # - name: Publish Flatpak package
       #   run: |
