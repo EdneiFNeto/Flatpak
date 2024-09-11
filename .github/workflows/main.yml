@@ -1,12 +1,7 @@
-name: Flatpack build
+name: Build Flatpak Package
 
 on:
-  workflow_dispatch:  # Permite execução manual através da interface do GitHub
-    inputs:
-      jar-file:
-        description: 'Path to the .jar file'
-        required: true
-        default: 'myapp.jar'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,6 +11,15 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+
+      - name: Build JAR with Gradle
+        run: |
+         ./gradlew assemble
+          
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -25,6 +29,16 @@ jobs:
         run: |
           flatpak --version
           flatpak-builder --version
+
+      # - name: Build Flatpak package
+      #   run: |
+      #     mkdir -p build-dir
+      #     cp build/libs/myapp.jar build-dir/
+          
+      #     # Use the JSON file to configure the build
+      #     cat config/manifest.json > build-dir/manifest.json
+
+      #     flatpak-builder --force-clean --repo=repo build-dir
 
       # - name: Publish Flatpak package
       #   run: |
