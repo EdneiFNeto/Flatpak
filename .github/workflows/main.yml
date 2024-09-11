@@ -33,16 +33,16 @@ jobs:
         run: |
           flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
+      - name: Enter directory and list files
+        run: |
+          cd composeApp/build/libs
+          ls -la
+
       - name: Prepare Flatpak build environment
         run: |
           mkdir -p build-dir
           mkdir -p files
           cp composeApp/build/libs/composeApp-desktop.jar files/composeApp-desktop.jar
-
-      - name: Enter directory and list files
-        run: |
-          cd files 
-          ls -la
 
       - name: Build Flatpak package
         run: flatpak-builder --force-clean build-dir com.flatpak.json
