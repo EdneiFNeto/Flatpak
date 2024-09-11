@@ -42,7 +42,7 @@ jobs:
         run: |
           mkdir -p build-dir
           mkdir -p files
-          cp composeApp/build/libs/composeApp-desktop.jar files/composeApp-desktop.jar
+          cp files/composeApp-desktop.jar composeApp/build/libs/composeApp-desktop.jar 
 
       - name: Build Flatpak package
         run: flatpak-builder --force-clean build-dir com.flatpak.json
