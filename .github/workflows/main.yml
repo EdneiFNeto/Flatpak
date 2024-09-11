@@ -38,7 +38,7 @@ jobs:
           ls -la                 
 
       - name: Build Flatpak package
-        run: flatpak-builder --force-clean build-dir my-java-app.json
+        run: flatpak-builder --force-clean build-dir com.flatpk.json
 
       - name: Flatpak-builder
         run: | 
