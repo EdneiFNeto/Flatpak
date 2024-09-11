@@ -36,9 +36,9 @@ jobs:
           mkdir -p build-dir
           cp composeApp/build/libs/composeApp-desktop.jar build-dir/
 
-      - name: List files
+      - name: Flatpak-builder
         run: | 
-          cat config/manifest.json > build-dir/manifest.json
+          cat com.flatpk.json > build-dir/com.flatpk.json
           flatpak-builder --force-clean --repo=repo build-dir
 
       - name: Publish Flatpak package
