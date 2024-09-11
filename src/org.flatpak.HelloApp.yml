@@ -1,0 +1,16 @@
+app-id: org.flatpak.HelloApp
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: my-java-app.jar
+modules:
+  - name: hello
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 my-java-app.jar /app/bin/my-java-app.jar
+      - install -Dm755 run-java.sh /app/bin/run-java.sh
+    sources:
+      - type: file
+        path: my-java-app.jar
+      - type: file
+        path: run-java.sh
