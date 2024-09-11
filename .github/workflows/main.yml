@@ -1,0 +1,68 @@
+name: Build Flatpak Package
+
+on:
+  workflow_dispatch:  # Permite execução manual através da interface do GitHub
+    inputs:
+      jar-file:
+        description: 'Path to the .jar file'
+        required: true
+        default: 'myapp.jar'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder
+
+      - name: Set up Flatpak build environment
+        run: |
+          flatpak --version
+          flatpak-builder --version
+
+      - name: Build Flatpak package
+        run: |
+          mkdir -p build-dir
+          cat > build-dir/manifest.json <<EOF
+          {
+            "id": "com.example.MyApp",
+            "runtime": "org.freedesktop.Platform",
+            "runtime-version": "21.08",
+            "sdk": "org.freedesktop.Sdk",
+            "sdk-version": "21.08",
+            "modules": [
+              {
+                "name": "myapp",
+                "buildsystem": "simple",
+                "build-commands": [
+                  "mkdir -p /app/bin",
+                  "cp myapp.jar /app/bin/"
+                ],
+                "sources": [
+                  {
+                    "type": "file",
+                    "path": "myapp.jar"
+                  }
+                ]
+              }
+            ]
+          }
+          EOF
+
+          flatpak-builder --force-clean --repo=repo build-dir
+
+      - name: Publish Flatpak package
+        run: |
+          flatpak build-bundle repo myapp.flatpak com.example.MyApp
+          
+      - name: Upload Flatpak package
+        uses: actions/upload-artifact@v3
+        with:
+          name: myapp-flatpak
+          path: myapp.flatpak
