@@ -16,10 +16,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'  # Exemplo de distribuição, substitua conforme necessário
-
-#      - name: Build JAR with Gradle
-#        run: |
-#         ./gradlew assemble
           
       - name: Set up Flatpak
         run: |
@@ -31,33 +27,21 @@ jobs:
 
       - name: Install repository Flatpak
         run: |
-          flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
-      - name: Enter directory and list files
-        run: |
-          cd composeApp/build/libs
-          ls -la
-
-      - name: Prepare Flatpak build environment
-        run: |
-          mkdir -p build-dir
-          mkdir -p files
-          cp files/composeApp-desktop.jar composeApp/build/libs/composeApp-desktop.jar 
+          flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
       - name: Build Flatpak package
-        run: flatpak-builder --force-clean build-dir com.flatpak.json
+        run: flatpak-builder --force-clean build-dir org.flatpak.HelloApp.yml
 
       - name: Flatpak-builder
         run: | 
-          cat com.flatpak.json > build-dir/com.flatpak.json
-          flatpak-builder --force-clean --repo=repo build-dir
+          flatpak-builder --user --install --force-clean build-dir org.flatpak.HelloApp.yml
 
-      - name: Publish Flatpak package
-        run: |
-          flatpak build-bundle repo myapp.flatpak com.example.MyApp
+      # - name: Publish Flatpak package
+      #   run: |
+      #     flatpak build-bundle repo myapp.flatpak com.example.MyApp
           
-      - name: Upload Flatpak package
-        uses: actions/upload-artifact@v3
-        with:
-          name: myapp-flatpak
-          path: myapp.flatpak
+      # - name: Upload Flatpak package
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: myapp-flatpak
+      #     path: myapp.flatpak
