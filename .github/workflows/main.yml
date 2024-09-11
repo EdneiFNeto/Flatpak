@@ -1,4 +1,4 @@
-name: Build Flatpak Package
+name: Flatpack build
 
 on:
   workflow_dispatch:  # Permite execução manual através da interface do GitHub
