@@ -34,17 +34,17 @@ jobs:
         run: ls -R
 
       - name: Build Flatpak package
-        run: flatpak-builder --force-clean build-dir src/org.flatpak.HelloApp.yml
+        run: flatpak-builder --force-clean build-dir src/org.flatpak.Hello.yml
 
       - name: Flatpak-builder
         run: | 
-          flatpak-builder --user --install --force-clean build-dir src/org.flatpak.HelloApp.yml
+          flatpak-builder --user --install --force-clean build-dir src/org.flatpak.Hello.yml
 
       - name: Export Flatpak Repository
         run: |
           mkdir -p repo
           flatpak build-export repo build-dir com.example.MyApp
-          
+
       - name: Publish Flatpak package
         run: |
           flatpak build-bundle repo myapp.flatpak com.example.MyApp
