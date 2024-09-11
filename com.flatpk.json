@@ -1,0 +1,27 @@
+{
+  "app-id": "com.flatpak",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "21.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "java",
+  "finish-args": [
+    "--share=network",
+    "--filesystem=host"
+  ],
+  "modules": [
+    {
+      "name": "my-kotlin-app",
+      "buildsystem": "simple",
+      "build-commands": [
+        "gradle build",
+        "cp composeApp/build/libs/composeApp-desktop.jar /app/composeApp-desktop.jar"
+      ],
+      "sources": [
+        {
+          "type": "dir",
+          "path": "."
+        }
+      ]
+    }
+  ]
+}
