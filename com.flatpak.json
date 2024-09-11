@@ -14,7 +14,7 @@
       "name": "my-java-app",
       "buildsystem": "simple",
       "build-commands": [
-        "install -Dm755 build-dir/composeApp-desktop.jar /app/bin/myapp.jar"
+        "install -D files/composeApp-desktop.jar /app/bin/myapp.jar"
       ],
       "sources": [
         {
