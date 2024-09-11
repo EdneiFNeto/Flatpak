@@ -35,7 +35,10 @@ jobs:
         run: |
           mkdir -p build-dir
           cp composeApp/build/libs/composeApp-desktop.jar build-dir/
-          
+
+      - name: List files
+        run: | 
+          cd build-dir ls -la
       #     # Use the JSON file to configure the build
       #     cat config/manifest.json > build-dir/manifest.json
 
