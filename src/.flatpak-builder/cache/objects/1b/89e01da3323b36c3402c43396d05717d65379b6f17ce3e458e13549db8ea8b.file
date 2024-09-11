@@ -1,5 +1,0 @@
-#!/bin/sh
-chmod 644 /caminho/para/meu-java-app.jar
-chmod +x /caminho/para/run-java.sh
-exec java -jar /app/bin/my-java-app.jar
-chmod +x run-java.sh

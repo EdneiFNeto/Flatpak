@@ -1,3 +1,0 @@
-#!/bin/sh
-exec java -jar /app/bin/my-java-app.jar
-chmod +x run-java.sh
