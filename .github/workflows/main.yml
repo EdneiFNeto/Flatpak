@@ -28,8 +28,8 @@ jobs:
 
       - name: Install SDK
         run: |
-          flatpak install flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08
-
+          flatpak install -y flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08
+          
       - name: Build Flatpak package
         run: flatpak-builder --force-clean build-dir .github/scripts/org.flatpak.HelloApp.yml
 
