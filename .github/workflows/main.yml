@@ -30,9 +30,6 @@ jobs:
         run: |
           flatpak install -y flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08
 
-      - name: List all files
-        run: ls -R
-
       - name: Build Flatpak package
         run: flatpak-builder --force-clean build-dir src/org.flatpak.Hello.yml
 
@@ -40,6 +37,9 @@ jobs:
         run: | 
           flatpak-builder --user --install --force-clean build-dir src/org.flatpak.Hello.yml
 
+      - name: List all files
+        run: ls -R
+  
       - name: Flatpak run application
         run: | 
           flatpak-builder run org.flatpak.Hello
