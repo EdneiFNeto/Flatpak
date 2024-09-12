@@ -41,6 +41,11 @@ jobs:
         run: | 
           flatpak-builder --repo=myrepo --force-clean build-dir src/org.flatpak.HelloApp.yml
 
+      - name: Install application from the repository
+        run: | 
+          flatpak --user remote-add --no-gpg-verify myrepo myrepo
+          flatpak --user install myrepo org.flatpak.Hello
+
       - name: Archive build output
         run: |
           tar -czvf flatpak-build-output.tar.gz build-dir
