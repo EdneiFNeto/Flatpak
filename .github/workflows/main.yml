@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'  # Exemplo de distribuição, substitua conforme necessário
+          distribution: 'temurin'
           
       - name: Set up Flatpak
         run: |
@@ -40,7 +40,6 @@ jobs:
       - name: Flatpak repository
         run: | 
           latpak-builder --repo=myrepo --force-clean build-dir src/org.flatpak.HelloApp.yml
-
 
       - name: Archive build output
         run: |
