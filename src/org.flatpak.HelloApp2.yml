@@ -8,7 +8,6 @@ finish-args:
   - --share=ipc
   - --filesystem=home
   - --filesystem=/app/bin
-  - --no-sandbox
 modules:
   - name: my-java-app
     buildsystem: simple
