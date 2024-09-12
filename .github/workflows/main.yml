@@ -35,7 +35,7 @@ jobs:
 
       - name: Flatpak-builder
         run: | 
-          flatpak-builder --user --install --force-clean build-dir src/org.flatpak.HelloApp.yml
+          flatpak-builder --install --force-clean build-dir src/org.flatpak.HelloApp.yml
 
       - name: Archive build output
         run: |
