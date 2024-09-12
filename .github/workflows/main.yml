@@ -40,3 +40,9 @@ jobs:
       - name: Archive build output
         run: |
           tar -czvf flatpak-build-output.tar.gz build-dir
+
+      - name: Upload Flatpak build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: flatpak-build-output
+          path: flatpak-build-output.tar.gz
