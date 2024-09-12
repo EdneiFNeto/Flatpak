@@ -42,7 +42,7 @@ jobs:
 
       - name: Publish Flatpak package
         run: |
-          flatpak build-bundle --repo=myyrepo --force-clean build-dir com.example.MyApp
+          flatpak-builder --repo=myyrepo --force-clean build-dir com.example.MyApp
           
       # - name: Upload Flatpak package
       #   uses: actions/upload-artifact@v3
