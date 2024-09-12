@@ -36,13 +36,6 @@ jobs:
       - name: Flatpak-builder
         run: | 
           flatpak-builder --user --install --force-clean build-dir src/org.flatpak.Hello.yml
-
-      - name: List all files
-        run: ls -R
-
-      - name: Publish Flatpak package
-        run: |
-          flatpak-builder --repo=myyrepo --force-clean build-dir com.example.MyApp
           
       # - name: Upload Flatpak package
       #   uses: actions/upload-artifact@v3
