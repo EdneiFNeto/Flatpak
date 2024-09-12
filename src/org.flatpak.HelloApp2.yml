@@ -1,4 +1,4 @@
-app-id: org.flatpak.HelloApp
+app-id: org.flatpak.HelloApp2
 runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
@@ -7,9 +7,9 @@ sdk: org.freedesktop.Sdk
   - --filesystem=home
   - --filesystem=/app/bin
   - --no-sandbox
-command: my-java-app.jar
+command: my-java-app
 modules:
-  - name: hello
+  - name: my-java-app
     buildsystem: simple
     build-commands:
       - install -Dm644 my-java-app.jar /app/bin/my-java-app.jar
