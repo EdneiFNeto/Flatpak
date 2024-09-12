@@ -2,7 +2,7 @@ app-id: org.flatpak.HelloApp2
 runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
-command: my-java-app
+command: my-java-app.jar
 finish-args:
   - --share=network
   - --share=ipc
