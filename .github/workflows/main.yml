@@ -31,20 +31,20 @@ jobs:
           flatpak install -y flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08
 
       - name: Build Flatpak package
-        run: flatpak-builder --force-clean build-dir src/org.flatpak.HelloApp2.yml
+        run: flatpak-builder --force-clean build-dir src/org.flatpak.HelloApp.yml
 
       - name: Flatpak-builder
         run: | 
-          flatpak-builder --user --install --force-clean build-dir src/org.flatpak.HelloApp2.yml
+          flatpak-builder --user --install --force-clean build-dir src/org.flatpak.HelloApp.yml
 
       - name: Flatpak repository
         run: | 
-          flatpak-builder --repo=myrepo --force-clean build-dir src/org.flatpak.HelloApp2.yml
+          flatpak-builder --repo=myrepo --force-clean build-dir src/org.flatpak.HelloApp.yml
 
       - name: Install application from the repository
         run: | 
           flatpak --user remote-add --no-gpg-verify myrepo myrepo
-          flatpak --user install myrepo org.flatpak.HelloApp2
+          flatpak --user install myrepo org.flatpak.HelloApp
 
       - name: Archive build output
         run: |
