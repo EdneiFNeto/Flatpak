@@ -2,13 +2,12 @@ app-id: org.flatpak.HelloApp
 runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
-finish-args:
   - --share=network
   - --share=ipc
   - --filesystem=home
   - --filesystem=/app/bin
   - --no-sandbox
-command: my-java-app
+command: my-java-app.jar
 modules:
   - name: hello
     buildsystem: simple
