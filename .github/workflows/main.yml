@@ -39,7 +39,7 @@ jobs:
 
       - name: Flatpak repository
         run: | 
-          latpak-builder --repo=myrepo --force-clean build-dir src/org.flatpak.HelloApp.yml
+          flatpak-builder --repo=myrepo --force-clean build-dir src/org.flatpak.HelloApp.yml
 
       - name: Archive build output
         run: |
