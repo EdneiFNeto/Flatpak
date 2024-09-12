@@ -31,14 +31,9 @@ jobs:
           flatpak install -y flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08
 
       - name: Build Flatpak package
-        run: flatpak-builder --force-clean build-dir src/org.flatpak.Hello.yml
+        run: flatpak-builder --force-clean build-dir src/org.flatpak.HelloApp.yml
 
       - name: Flatpak-builder
         run: | 
-          flatpak-builder --user --install --force-clean build-dir src/org.flatpak.Hello.yml
-          
-      # - name: Upload Flatpak package
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: myapp-flatpak
-      #     path: myapp.flatpak
+          flatpak-builder --user --install --force-clean build-dir src/org.flatpak.HelloApp.yml
+
