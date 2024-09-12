@@ -3,11 +3,11 @@ runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 command: my-java-app.jar
-finish-args:
-  - --share=network
-  - --share=ipc
-  - --filesystem=home
-  - --filesystem=/app/bin
+# finish-args:
+#   - --share=network
+#   - --share=ipc
+#   - --filesystem=home
+#   - --filesystem=/app/bin
 modules:
   - name: my-java-app
     buildsystem: simple
