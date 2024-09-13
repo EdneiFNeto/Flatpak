@@ -48,7 +48,7 @@ jobs:
       - name: Add Flatpak remote if not exists
         run: |
           if ! flatpak remotes | grep -q myrepo; then
-            flatpak --user remote-add --no-gpg-verify myrepo https://example.com/myrepo.flatpakrepo
+            flatpak --user remote-add --no-gpg-verify myrepo 
           else
             echo "Repositório myrepo já está adicionado."
           fi
@@ -71,7 +71,7 @@ jobs:
           tar -czvf flatpak-build-output.tar.gz build-dir
 
       - name: Upload Flatpak build artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: flatpak-build-output
           path: flatpak-build-output.tar.gz
