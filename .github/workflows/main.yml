@@ -37,6 +37,10 @@ jobs:
         run: | 
           flatpak-builder --user --install --force-clean build-dir src/org.flatpak.HelloApp.yml
 
+      - name: Create file .flatpak
+        run: | 
+          flatpak build-bundle zoop-repo myapp.flatpak org.flatpak.HelloApp x86_64/master
+
       - name: Archive build output
         run: |
           tar -czvf flatpak-build-output.tar.gz build-dir
