@@ -21,6 +21,10 @@ jobs:
         run: |
           sudo apt-get install -y flatpak flatpak-builder
           sudo add-apt-repository ppa:flatpak/stable
+      
+      - name: Delete repository
+        run: | 
+          flatpak remote-delete helloapp-origin
 
       - name: Install repository Flatpak
         run: |
@@ -52,10 +56,6 @@ jobs:
       - name: List repository
         run: | 
           flatpak remotes
-
-      - name: Delete repository
-        run: | 
-          flatpak remote-delete helloapp-origin
 
       - name: Install application from the repository
         run: | 
