@@ -39,6 +39,7 @@ jobs:
 
       - name: Delete repository
         run: | 
+          flatpak uninstall -y org.flatpak.HelloApp
           flatpak remote-delete helloapp-origin
 
       - name: Flatpak repository
