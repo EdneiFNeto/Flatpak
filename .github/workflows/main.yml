@@ -33,11 +33,15 @@ jobs:
       - name: Build Flatpak package
         run: |
           flatpak-builder --force-clean build-dir src/org.flatpak.HelloApp.yml
-          flatpak build-bundle repo myapp.flatpak src/org.flatpak.HelloApp x86_64/master
+          
 
       - name: Flatpak-builder
         run: | 
           flatpak-builder --user --install --force-clean build-dir src/org.flatpak.HelloApp.yml
+
+      - name: Create file .flatpak
+        run: | 
+          flatpak build-bundle repo myapp.flatpak src/org.flatpak.HelloApp x86_64/master
           
       - name: Upload Flatpak Bundle
         uses: actions/upload-artifact@v3
