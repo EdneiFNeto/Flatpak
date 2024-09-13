@@ -47,7 +47,7 @@ jobs:
 
       - name: Search applications
         run: | 
-          flatpak search HelloApp
+          flatpak search org.flatpak.HelloApp
 
       - name: List repository
         run: | 
