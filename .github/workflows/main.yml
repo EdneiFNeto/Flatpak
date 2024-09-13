@@ -47,7 +47,7 @@ jobs:
 
       - name: Search applications
         run: | 
-          flatpak search gimp
+          flatpak search HelloApp
 
       - name: List repository
         run: | 
