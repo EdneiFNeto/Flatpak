@@ -48,7 +48,7 @@ jobs:
 
       - name: Create file .flatpak
         run: | 
-          flatpak build-bundle repo myapp.flatpak src/org.flatpak.HelloApp x86_64/master
+          flatpak build-bundle repo myapp.flatpak org.flatpak.HelloApp x86_64
           
       - name: Upload Flatpak Bundle
         uses: actions/upload-artifact@v3
