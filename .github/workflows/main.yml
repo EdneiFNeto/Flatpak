@@ -41,6 +41,14 @@ jobs:
         run: | 
           flatpak-builder --repo=myrepo --force-clean build-dir src/org.flatpak.HelloApp.yml
 
+      - name: List applications
+        run: | 
+          flatpak list
+
+      - name: Search applications
+        run: | 
+          flatpak search gimp
+
       - name: List repository
         run: | 
           flatpak remotes
