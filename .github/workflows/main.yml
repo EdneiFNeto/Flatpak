@@ -49,6 +49,14 @@ jobs:
         run: |
           flatpak uninstall -y org.flatpak.HelloApp
 
+      - name: Install Flatpak app
+        run: |
+          flatpak install -y helloapp-origin org.flatpak.HelloApp/x86_64/master
+
+      - name: Reinstall Flatpak app
+        run: |
+          flatpak install --reinstall -y helloapp-origin org.flatpak.HelloApp/x86_64/master
+        
       - name: Install application from the repository
         run: | 
           flatpak --user remote-add --no-gpg-verify myrepo myrepo
