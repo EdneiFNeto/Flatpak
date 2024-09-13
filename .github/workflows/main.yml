@@ -33,8 +33,15 @@ jobs:
       - name: Build Flatpak package
         run: |
           flatpak-builder --force-clean build-dir src/org.flatpak.HelloApp.yml
-          flatpak build-repo repo build-dir
-          
+
+      - name: Add App to Repository
+        run: |
+          flatpak build-export repo build-dir
+
+      - name: Build Flatpak Bundle
+        run: |
+          flatpak build-bundle repo myapp.flatpak src/org.flatpak.HelloApp x86_64/master
+
       - name: Flatpak-builder
         run: | 
           flatpak-builder --user --install --force-clean build-dir src/org.flatpak.HelloApp.yml
