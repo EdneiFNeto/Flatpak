@@ -53,7 +53,7 @@ jobs:
         run: | 
           flatpak remotes
 
-      - name: List repository
+      - name: Delete repository
         run: | 
           flatpak remote-delete helloapp-origin
 
