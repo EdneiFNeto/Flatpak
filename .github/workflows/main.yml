@@ -53,6 +53,10 @@ jobs:
         run: | 
           flatpak remotes
 
+      - name: List repository
+        run: | 
+          flatpak remote-delete helloapp-origin
+
       - name: Install application from the repository
         run: | 
           flatpak --user remote-add --no-gpg-verify myrepo myrepo
