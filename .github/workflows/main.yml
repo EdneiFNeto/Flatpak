@@ -45,22 +45,6 @@ jobs:
         run: | 
           flatpak remotes
 
-      - name: Add Flatpak remote if not exists
-        run: |
-          if ! flatpak remotes | grep -q myrepo; then
-            flatpak --user remote-add --no-gpg-verify myrepo 
-          else
-            echo "Repositório myrepo já está adicionado."
-          fi
-  
-      - name: Remove existing Flatpak app
-        run: |
-          flatpak uninstall -y org.flatpak.HelloApp || true
-  
-      - name: Update Flatpak app
-        run: |
-          flatpak update -y org.flatpak.HelloApp || true
-
       - name: Install application from the repository
         run: | 
           flatpak --user remote-add --no-gpg-verify myrepo myrepo
