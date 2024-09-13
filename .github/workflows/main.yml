@@ -31,22 +31,16 @@ jobs:
           flatpak install -y flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08
 
       - name: Build Flatpak package
-        run: flatpak-builder --force-clean build-dir src/org.flatpak.HelloApp.yml
+        run: |
+          flatpak-builder --force-clean build-dir src/org.flatpak.HelloApp.yml
+          flatpak build-bundle repo myapp.flatpak src/org.flatpak.HelloApp x86_64/master
 
       - name: Flatpak-builder
         run: | 
           flatpak-builder --user --install --force-clean build-dir src/org.flatpak.HelloApp.yml
-
-      - name: Create file .flatpak
-        run: | 
-          flatpak build-bundle zoop-repo myapp.flatpak org.flatpak.HelloApp x86_64/master
-
-      - name: Archive build output
-        run: |
-          tar -czvf flatpak-build-output.tar.gz build-dir
-
-      - name: Upload Flatpak build artifacts
-        uses: actions/upload-artifact@v4
+          
+      - name: Upload Flatpak Bundle
+        uses: actions/upload-artifact@v3
         with:
-          name: flatpak-build-output
-          path: flatpak-build-output.tar.gz
+          name: myapp-flatpak
+          path: myapp.flatpak
