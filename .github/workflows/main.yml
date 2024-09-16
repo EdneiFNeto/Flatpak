@@ -28,26 +28,22 @@ jobs:
 
       - name: Install SDK
         run: |
-          flatpak install -y flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08
+          flatpak install -y flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08/
 
       - name: Build Flatpak package
         run: |
           flatpak-builder --force-clean build-dir src/org.flatpak.HelloApp.yml
       
-      - name: Flatpak-builder
+      - name: Export repository 
         run: | 
-          flatpak-builder --user --install --force-clean build-dir src/org.flatpak.HelloApp.yml
+          flatpak-builder --force-clean  --repo=example-repo build-dir src/org.flatpak.HelloApp.yml
 
-      - name: Add App to Repository
+      - name: Flatpak build-bundle
         run: |
-          flatpak build-export repo build-dir
-
-      - name: Build Flatpak Bundle
-        run: |
-          flatpak build-bundle repo myapp.flatpak org.flatpak.HelloApp
+          flatpak build-bundle example-repo zoopPcServer.flatpak org.flatpak.HelloApp
           
       - name: Upload Flatpak Bundle
         uses: actions/upload-artifact@v3
         with:
-          name: myapp-flatpak
-          path: myapp.flatpak
+          name: zoopPcServer-flatpak
+          path: zoopPcServer.flatpak
