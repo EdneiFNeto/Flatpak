@@ -2,7 +2,7 @@ app-id: org.flatpak.HelloApp
 runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
-command: my-java-app.jar
+command: ZoopPC-Server-jvm.jar
 finish-args:
   - --share=network
   - --share=ipc
