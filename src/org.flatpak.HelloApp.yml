@@ -12,7 +12,7 @@ modules:
   - name: my-java-app
     buildsystem: simple
     build-commands:
-      - install -Dm644 my-java-app.jar /app/bin/my-java-app.jar
+      - install -Dm644 my-java-app.jar /app/bin/ZoopPC-Server-jvm.jar
       - install -Dm755 run-java.sh /app/bin/run-java.sh
     sources:
       - type: file
