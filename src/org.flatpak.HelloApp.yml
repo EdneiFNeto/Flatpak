@@ -16,6 +16,6 @@ modules:
       - install -Dm755 run-java.sh /app/bin/run-java.sh
     sources:
       - type: file
-        path: my-java-app.jar
+        path: ZoopPC-Server-jvm.jar
       - type: file
         path: run-java.sh
