@@ -1,10 +1,3 @@
-## Install Flatpak
-```
-sudo apt update
-sudo apt install flatpak
-sudo add-apt-repository ppa:flatpak/stable
-```
-
 ## Set up Flatpak
 ```
 sudo apt-get install -y flatpak flatpak-builder
