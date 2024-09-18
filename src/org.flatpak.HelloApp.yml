@@ -2,20 +2,29 @@ app-id: org.flatpak.HelloApp
 runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
-command: ZoopPC-Server-jvm.jar
+command: pinpad-server
 finish-args:
   - --share=network
-  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --device=dri
   - --filesystem=home
-  - --filesystem=/app/bin
+
 modules:
-  - name: my-java-app
+  # Módulo para instalar dependências via arquivo .deb local
+  - name: pinpad-server-installer_linux_3.7.5
     buildsystem: simple
     build-commands:
-      - install -Dm644 ZoopPC-Server-jvm.jar /app/bin/ZoopPC-Server-jvm.jar
-      - install -Dm755 run-java.sh /app/bin/run-java.sh
+      - ar x  pinpad-server-installer_linux_3.7.5.deb
+      # Extrair o arquivo data.tar.xz ou data.tar.gz
+      - tar -xf data.tar.* -C .
+      # Copiar os arquivos extraídos para /app
+      - install -Dm755 pinpad-server-installer_linux_3.7.5.deb /app/bin/pinpad-server
     sources:
+      # Use o caminho local do arquivo .deb
       - type: file
-        path: ZoopPC-Server-jvm.jar
-      - type: file
-        path: run-java.sh
+        path: pinpad-server-installer_linux_3.7.5.deb
+
+# Defina o ícone para o aplicativo
+metadata:
+  icon: icons/server-icon.png

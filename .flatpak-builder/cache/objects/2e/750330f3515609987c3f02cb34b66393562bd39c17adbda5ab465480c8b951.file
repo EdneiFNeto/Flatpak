@@ -1,0 +1,34 @@
+{
+  "id" : "org.flatpak.HelloApp",
+  "runtime" : "org.freedesktop.Platform",
+  "runtime-version" : "22.08",
+  "runtime-commit" : "d2c113142fa71cf8347a93e12877ca3fc08106c4d3445c621e8fe8218c0b5379",
+  "sdk" : "org.freedesktop.Sdk",
+  "sdk-commit" : "c682cad0720bc672469cca4848b2d24f112f1711e46ce65ec416584b0cb7cfc8",
+  "command" : "pinpad-server",
+  "modules" : [
+    {
+      "name" : "pinpad-server-installer_linux_3.7.5",
+      "buildsystem" : "simple",
+      "sources" : [
+        {
+          "path" : "pinpad-server-installer_linux_3.7.5.deb",
+          "type" : "file"
+        }
+      ],
+      "build-commands" : [
+        "ar x  pinpad-server-installer_linux_3.7.5.deb",
+        "tar -xf data.tar.* -C .",
+        "install -Dm755 pinpad-server-installer_linux_3.7.5.deb /app/bin/pinpad-server"
+      ]
+    }
+  ],
+  "finish-args" : [
+    "--share=network",
+    "--socket=x11",
+    "--socket=wayland",
+    "--device=dri",
+    "--filesystem=home"
+  ],
+  "source-date-epoch" : 1726680442
+}
