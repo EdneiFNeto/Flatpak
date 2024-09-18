@@ -1,2 +1,7 @@
 .gradle/*
 *.xml
+.flatpak-builder
+build
+build-dir
+repo
+
