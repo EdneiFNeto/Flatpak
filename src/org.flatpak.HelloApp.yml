@@ -8,23 +8,13 @@ finish-args:
   - --socket=x11
   - --socket=wayland
   - --device=dri
-  - --filesystem=home
-
 modules:
-  # Módulo para instalar dependências via arquivo .deb local
-  - name: pinpad-server-installer_linux_3.7.5
+  - name: pinpad-server
     buildsystem: simple
     build-commands:
-      - ar x  pinpad-server-installer_linux_3.7.5.deb
-      # Extrair o arquivo data.tar.xz ou data.tar.gz
-      - tar -xf data.tar.* -C .
-      # Copiar os arquivos extraídos para /app
-      - install -Dm755 pinpad-server-installer_linux_3.7.5.deb /app/bin/pinpad-server
+      - install -D extracted/usr/bin/pinpad-server /app/bin/pinpad-server
+      - install -D extracted/usr/share/applications/pinpad-server.desktop /app/share/applications/pinpad-server.desktop
+      - install -D extracted/usr/share/icons/pinpad-server.png /app/share/icons/hicolor/64x64/apps/pinpad-server.png
     sources:
-      # Use o caminho local do arquivo .deb
       - type: file
-        path: pinpad-server-installer_linux_3.7.5.deb
-
-# Defina o ícone para o aplicativo
-metadata:
-  icon: icons/server-icon.png
+        path: ./extracted
